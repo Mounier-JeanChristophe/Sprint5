@@ -10,3 +10,6 @@ Objectif : Tester le programme développé durant les 4 sprint précédants
 > python3 main.py -t ./
 #### Pour avoir les sorties au format xml:
 > python3 main.py -x ./
+
+### Au cas ou python3-lxml n'est inclus : 
+> sudo apt-get install python3-lxml
