@@ -25,7 +25,7 @@ def find_paragraph(file_path, titre):
     linePrecedant = "aa"
     with open(file_path, "r") as file :
         for line in file :
-            if(line.lower().find(titre) != -1): #or line.find(titre) != -1):   
+            if((line.lower().find(titre) != -1) or (line.lower().replace(" ","").find(titre) != -1)):   
                        	
                 if(len(line) <= len(titre)+1):
                         line = file.readline()
@@ -37,7 +37,7 @@ def find_paragraph(file_path, titre):
                              break   
 
                     else :
-                        if(line.lower().strip() == "1 introduction" or line.strip() == "I. INTRODUCTION" or line[0:9] == "Keywords:") :
+                        if(line.lower().strip() == "1 introduction" or line.strip() == "I. INTRODUCTION" or line[0:9] == "Keywords:" or line.strip() == "1. Introduction"):
                              break
 
                     paragraph = paragraph + line.strip() + " "
