@@ -4,20 +4,15 @@
 		then
 			$(mkdir TEXT/)
 	fi
-
+	for fich in $(ls TEXT)
+	do
+		rm TEXT/$fich
+	done
 	for fich in $(find -name "*.pdf")
 	do
-		$(pdftotext $fich)
+		$(pdftotext -raw -enc ASCII7 $fich)
 	done
-
 	for fich in $(find $1 -name "*.txt" | grep -oP '(?<=/)[^ ]*')
-	do
-		if [ ! -f TEXT/$fich ]
-			then 
-				mv $1/$fich TEXT
-		else
-			rm TEXT/$fich
-			mv $1/$fich TEXT
-		fi
+	do 
+		mv $1/$fich TEXT	
 	done
-	
